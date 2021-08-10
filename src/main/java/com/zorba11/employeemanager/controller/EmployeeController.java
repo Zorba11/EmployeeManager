@@ -31,8 +31,10 @@ public class EmployeeController {
     }
 
     @PutMapping("api/employees/{id}")
-    public String updateEmployee(@PathVariable String id) {
-        return "Employee updated: " + id;
+    public String updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
+        employeeService.updateEmployee(id, employee);
+
+        return "Employee updated, ID: " + employee.getId();
     }
 }
 

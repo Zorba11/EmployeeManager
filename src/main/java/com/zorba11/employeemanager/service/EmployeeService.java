@@ -25,8 +25,14 @@ public class EmployeeService {
     }
 
     public void addEmployee(Employee employee) {
-        System.out.println("empl---"+ employee);
         employees.add(employee);
+    }
+
+    public void updateEmployee(Long id, Employee employee) {
+        employees.forEach(e -> {
+            if (e.getId() == id)
+                employees.set(Math.toIntExact(id), employee);
+        });
     }
 
 }
