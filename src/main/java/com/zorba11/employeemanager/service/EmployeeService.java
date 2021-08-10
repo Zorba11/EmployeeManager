@@ -42,7 +42,7 @@ public class EmployeeService {
     }
 
     public void deleteEmployee(Long id) {
-//        employees.removeIf(e -> e.getId().equals(id));
+        employeeRepository.deleteById(id);
     }
 
 }
