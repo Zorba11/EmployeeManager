@@ -3,6 +3,7 @@ package com.zorba11.employeemanager.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Employee {
@@ -10,7 +11,11 @@ public class Employee {
     @Id
     @GeneratedValue
     private Long id;
+
+    @NotBlank(message = "Name is mandatory")
     private String name;
+
+    @NotBlank(message = "Role is mandatory")
     private String role;
 
     public Employee() {
