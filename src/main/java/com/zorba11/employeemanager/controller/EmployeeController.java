@@ -19,8 +19,8 @@ public class EmployeeController {
     }
 
     @GetMapping("api/employees/{id}")
-    public String getEmployee(@PathVariable Long id) {
-        return "employee id : " + id;
+    public Employee getEmployee(@PathVariable Long id) {
+        return employeeService.getEmployeeById(id);
     }
 
     @PostMapping("api/employees")
@@ -32,7 +32,5 @@ public class EmployeeController {
     public String updateEmployee(@PathVariable String id) {
         return "Employee updated: " + id;
     }
-
-
 }
 
