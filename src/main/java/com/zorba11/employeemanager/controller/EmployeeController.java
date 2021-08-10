@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class EmployeeController {
@@ -19,7 +20,7 @@ public class EmployeeController {
     }
 
     @GetMapping("api/employees/{id}")
-    public Employee getEmployee(@PathVariable Long id) {
+    public Optional<Employee> getEmployee(@PathVariable Long id) {
         return employeeService.getEmployeeById(id);
     }
 
@@ -28,9 +29,9 @@ public class EmployeeController {
         return employeeService.addEmployee(employee);
     }
 
-    @PutMapping("api/employees/{id}")
-    public String updateEmployee(@PathVariable Long id, @RequestBody Employee employee) {
-        employeeService.updateEmployee(id, employee);
+    @PutMapping("api/employees")
+    public String updateEmployee(@RequestBody Employee employee) {
+        employeeService.updateEmployee(employee);
 
         return "Employee updated, ID: " + employee.getId();
     }

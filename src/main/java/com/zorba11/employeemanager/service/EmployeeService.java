@@ -24,12 +24,6 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public List<Employee> employees = new ArrayList<>(Arrays.asList(
-            new Employee(1L, "Alen", "Software Developer"),
-            new Employee(2L, "Wozniak", "Lead developer"),
-            new Employee(3L, "Turing", "Researcher")
-    ));
-
     public List<Employee> getAllEmployees() {
         return employeeRepository.findAll();
     }
@@ -43,14 +37,12 @@ public class EmployeeService {
         return employee.getId();
     }
 
-    public void updateEmployee(Long id, Employee employee) {
-        employees.forEach(e -> {
-            if (e.getId() == id)
-                employees.set(Math.toIntExact(id), employee);
-        });
+    public void updateEmployee(Employee employee) {
+        employeeRepository.save(employee);
     }
 
     public void deleteEmployee(Long id) {
         employees.removeIf(e -> e.getId().equals(id));
     }
+
 }
