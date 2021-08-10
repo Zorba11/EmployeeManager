@@ -24,10 +24,8 @@ public class EmployeeController {
     }
 
     @PostMapping("api/employees")
-    public String addEmployee(@RequestBody Employee employee) {
-        employeeService.addEmployee(employee);
-
-        return "Employee added. Id: " + employee.getId();
+    public Long addEmployee(@RequestBody Employee employee) {
+        return employeeService.addEmployee(employee);
     }
 
     @PutMapping("api/employees/{id}")
