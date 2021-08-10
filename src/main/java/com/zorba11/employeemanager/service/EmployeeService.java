@@ -10,11 +10,11 @@ import java.util.List;
 @Service
 public class EmployeeService {
 
-    public List<Employee> employees = Arrays.asList(
+    public List<Employee> employees = new ArrayList<>(Arrays.asList(
             new Employee(1L, "Alen", "Software Developer"),
             new Employee(2L, "Wozniak", "Lead developer"),
             new Employee(3L, "Turing", "Researcher")
-    );
+    ));
 
     public List<Employee> getAllEmployees() {
         return employees;
@@ -22,6 +22,11 @@ public class EmployeeService {
 
     public Employee getEmployeeById(Long id) {
         return employees.stream().filter(e -> e.getId().equals(id)).findFirst().get();
+    }
+
+    public void addEmployee(Employee employee) {
+        System.out.println("empl---"+ employee);
+        employees.add(employee);
     }
 
 }
