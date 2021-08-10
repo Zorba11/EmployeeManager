@@ -4,7 +4,6 @@ import com.zorba11.employeemanager.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -12,6 +11,7 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Repository
@@ -34,8 +34,8 @@ public class EmployeeService {
         return employeeRepository.findAll();
     }
 
-    public Employee getEmployeeById(Long id) {
-        return employees.stream().filter(e -> e.getId().equals(id)).findFirst().get();
+    public Optional<Employee> getEmployeeById(Long id) {
+        return  employeeRepository.findById(id);
     }
 
     public Long addEmployee(Employee employee) {
